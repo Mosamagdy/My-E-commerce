@@ -94,7 +94,7 @@ export default function Register() {
       type="password"
       id="password"
       name="password"
-      placeholder="Enter your password"
+      placeholder="Enter your password .... example Abc@123"
       className="text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
     />
     {registerForm.touched.password && registerForm.errors.password ? <p className="text-red-800">{registerForm.errors.password}</p> : ''}

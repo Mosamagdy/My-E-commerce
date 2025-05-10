@@ -78,7 +78,7 @@ export default function Cart() {
   }
 
   return (
-    <div style={{ backgroundColor: "#3D5A3C", color: "#FFF", padding: "20px" }}>
+      <div className="flex flex-col items-center bg-[#3D5A3C] text-white p-10 min-h-screen">
       <Toaster />
       {cartData?.products.length > 0 ? (
         <div className="w-11/12 mx-auto my-5">

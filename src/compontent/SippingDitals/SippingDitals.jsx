@@ -49,7 +49,7 @@ export default function ShippingDetails() {
   }
 
   return (
-  <div style={{ backgroundColor: "#3D5A3C", color: "#FFF", padding: "20px" }}>
+ <div style={{ minHeight: "100vh", backgroundColor: "#3D5A3C", color: "#FFF", padding: "20px" }}>
 <div className='w-7/12 mx-auto'>
       <h1>Shipping Details</h1>
       <form onSubmit={ChecCartPayVales.handleSubmit}>
