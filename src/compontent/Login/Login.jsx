@@ -9,10 +9,12 @@ import logo from '../../assets/images/freshcart-logo.svg';
 export default function Login() {
   let [errorMessage, setError] = useState(null);
   let { setToken } = useContext(AuthContext);
+
   let initialValues = {
     email: '',
     password: '',
   };
+
   let validationSchema = Yup.object({
     email: Yup.string()
       .required('Email required')
@@ -35,7 +37,7 @@ export default function Login() {
         if (response.data.message === 'success') {
           setToken(response.data.token);
           localStorage.setItem('token', response.data.token);
-          window.location.href = '/'; 
+          window.location.href = '/';
         }
       })
       .catch((err) => {
@@ -44,49 +46,52 @@ export default function Login() {
   }
 
   return (
-    <div className="flex flex-col items-center bg-[#3D5A3C] text-white p-10 min-h-screen">
-      <div className="w-2/5 mb-6 flex justify-center">
+    <div className="flex flex-col items-center bg-[#3D5A3C] text-white p-10 min-h-screen sm:p-6 md:p-8 lg:p-10 xl:p-12">
+      <div className="w-full sm:w-3/5 md:w-2/5 mb-6 flex justify-center">
         <img src={logo} alt="Flowbite Logo" className="w-full max-w-md" />
       </div>
-      <div className="w-7/12 bg-[#3D5A3C] mx-auto shadow-2xl shadow-white/80 text-gray-900 p-8 rounded-lg">
+
+      <div className="w-full sm:w-11/12 md:w-8/12 lg:w-6/12 xl:w-5/12 bg-[#3D5A3C] mx-auto shadow-2xl shadow-white/80 text-gray-900 p-8 rounded-lg">
         <form onSubmit={loginForm.handleSubmit}>
-          <div className="mb-5">
+          <div className="mb-5 w-full">
             <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               Your email
             </label>
             <input
               type="email"
               id="email"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500"
               placeholder="name@example.com"
               required
               value={loginForm.values.email}
               onChange={loginForm.handleChange}
               onBlur={loginForm.handleBlur}
             />
-            {loginForm.touched.email && loginForm.errors.email ? (
+            {loginForm.touched.email && loginForm.errors.email && (
               <div className="text-red-600">{loginForm.errors.email}</div>
-            ) : null}
+            )}
           </div>
-          <div className="mb-5">
+
+          <div className="mb-5 w-full">
             <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               Your password
             </label>
             <input
               type="password"
               id="password"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500"
               required
               value={loginForm.values.password}
               onChange={loginForm.handleChange}
               onBlur={loginForm.handleBlur}
               placeholder="Enter your password"
             />
-            {loginForm.touched.password && loginForm.errors.password ? (
+            {loginForm.touched.password && loginForm.errors.password && (
               <div className="text-red-600">{loginForm.errors.password}</div>
-            ) : null}
+            )}
             <Link to="/ForgotPassword">Forgot Password?</Link>
           </div>
+
           <button
             type="submit"
             className="text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
@@ -95,6 +100,7 @@ export default function Login() {
           </button>
         </form>
       </div>
+
       {errorMessage && (
         <div className="p-4 mt-4 text-sm text-red-800 bg-red-50 rounded-lg" role="alert">
           {errorMessage}
